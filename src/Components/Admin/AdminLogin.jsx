@@ -55,7 +55,7 @@ const AdminLogin = () => {
         if(password === admin_pswd){
           setErr("")
           toast.success("Login successful")
-          navigate('/admin')
+          navigate('/adminportal')
            
         }else{
             setErr(<h4 style={errDesign}>Password is incorrect</h4>)

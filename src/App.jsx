@@ -14,7 +14,7 @@ const App = () => {
      <Routes>
 
       <Route element={<LandingPage />} path='/'/>
-      <Route element={<AdminPortal/>} path='/admin'/>
+      <Route element={<AdminPortal/>} path='/adminportal/*'/>
 
      </Routes>
 

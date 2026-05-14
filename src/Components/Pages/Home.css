@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.home-root {
+  min-height: 100vh;
+  background: #f5f2ee;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.home-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.home-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 5rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e8e0d6;
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #7a6a58;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background: #d4762a;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  color: #1a1107;
+  letter-spacing: -3px;
+  max-width: 800px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #d4762a;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: #9a8a78;
+  line-height: 1.7;
+  max-width: 440px;
+  font-weight: 300;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  height: 50px;
+  padding: 0 2rem;
+  background: #1a1107;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,17,7,0.2);
+}
+
+.btn-secondary {
+  height: 50px;
+  padding: 0 1.5rem;
+  background: transparent;
+  color: #7a6a58;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.btn-secondary:hover { color: #1a1107; }
+
+/* ── Tags ── */
+.tags-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+
+.tag-bubble {
+  background: #fff;
+  border: 1px solid #e8e0d6;
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #5a4a38;
+  cursor: default;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.tag-bubble:hover {
+  background: #1a1107;
+  color: #fff;
+  border-color: #1a1107;
+  transform: translateY(-2px);
+}
+
+/* ── Product Cards Showcase ── */
+.showcase {
+  margin-top: 4rem;
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+
+.cards-strip {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-card {
+  width: 160px;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #ede0d0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 30px rgba(26,17,7,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  margin: 0 -12px;
+  flex-shrink: 0;
+}
+
+.product-card:hover {
+  transform: translateY(-16px) rotate(0deg) scale(1.06) !important;
+  box-shadow: 0 24px 50px rgba(26,17,7,0.16);
+  z-index: 10;
+}
+
+.product-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.product-card-name {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #5a4a38;
+  text-align: center;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-price {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4762a;
+}
+
+/* ── Stats ── */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e8e0d6;
+  animation: fadeUp 0.6s 0.6s ease both;
+}
+
+.stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1a1107;
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: #9a8a78;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Skeleton ── */
+.loading-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeleton-card {
+  width: 160px;
+  height: 220px;
+  background: linear-gradient(90deg, #f0e8dc 25%, #fdf8f2 50%, #f0e8dc 75%);
+  background-size: 200% 100%;
+  border-radius: 18px;
+  margin: 0 -12px;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Animations ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
