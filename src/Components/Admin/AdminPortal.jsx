@@ -1,10 +1,13 @@
-import React from 'react'
+
+import { Routes } from "react-router-dom"
 
 const AdminPortal = () => {
   return (
-    <div>
-      <h1>Admin Portal</h1>
-    </div>
+   <>
+   <Routes/>
+
+   
+   </>
   )
 }
 

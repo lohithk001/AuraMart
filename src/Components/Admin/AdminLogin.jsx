@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import AdminPortal from './AdminPortal'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 const AdminLogin = () => {
@@ -17,6 +17,9 @@ const AdminLogin = () => {
 
     
   }
+
+
+
    let [email, password] = [formData.email, formData.password]
 
   let admin_credentials = {
@@ -51,13 +54,16 @@ const AdminLogin = () => {
     if (email === admin_email){
         if(password === admin_pswd){
           setErr("")
+          toast.success("Login successful")
           navigate('/admin')
            
         }else{
             setErr(<h4 style={errDesign}>Password is incorrect</h4>)
+            toast.error("Login failed")
              }
     }else{
     setErr(<h4 style={errDesign}>Email is incorrect</h4>)
+    toast.error("Login failed")
          }
 
 
