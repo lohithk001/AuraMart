@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import NavBar from "../NavBar"
-// import './Home.css'
+
+import './Home.css'
 
 const Home = () => {
   const [products, setProducts] = useState([])
@@ -21,15 +21,12 @@ const Home = () => {
      
 
       <div className="home-root">
-        <NavBar />
+       
         <div className="home-inner">
 
           {/* Hero */}
           <section className="hero">
-            <span className="hero-eyebrow">
-              <span className="hero-eyebrow-dot" />
-              New Season — Summer '26
-            </span>
+          
 
             <h1 className="hero-title">
               A place to shop<br />
@@ -90,10 +87,6 @@ const Home = () => {
             <div className="stat">
               <span className="stat-num">4.9★</span>
               <span className="stat-label">Avg Rating</span>
-            </div>
-            <div className="stat">
-              <span className="stat-num">60%</span>
-              <span className="stat-label">Max Savings</span>
             </div>
           </div>
 

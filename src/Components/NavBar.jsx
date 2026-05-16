@@ -1,6 +1,6 @@
 
 import { NavLink } from 'react-router-dom'
-
+import LogoutIcon from '@mui/icons-material/Logout';
 const NavBar = () => {
   return (
    <>
@@ -15,6 +15,14 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink to="/adminportal/products">Products</NavLink>
+        </li>
+        <li>
+          <NavLink to="/adminportal/about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/">
+            <LogoutIcon />
+          </NavLink>
         </li>
       </ul>
       

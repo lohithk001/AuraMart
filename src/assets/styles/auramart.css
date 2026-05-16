@@ -213,3 +213,116 @@ img{
   color: white;
   box-shadow: 0px 5px 12px rgba(223, 148, 83, 0.4);
 }
+
+
+
+
+
+/* /design for the product page  */
+
+
+
+.products {
+  padding: 20px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.products h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* container */
+.prodcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* card */
+.card {
+  width: 250px;
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* category tag */
+.cat {
+  background: #4d951d;
+  color: white;
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* image */
+.image {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+}
+
+/* title */
+.title {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.prod-btn,
+.delete-btn {
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 8px 5px;
+  transition: 0.3s;
+}
+
+/* Preview Button */
+.prod-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.prod-btn:hover {
+  background: #388e3c;
+  transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
