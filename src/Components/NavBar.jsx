@@ -20,6 +20,7 @@ const NavBar = () => {
           <NavLink to="/adminportal/about">About</NavLink>
         </li>
         <li>
+<<<<<<< HEAD
           <NavLink to="/adminportal/addproducts">Add Product</NavLink>
         </li>
 
@@ -27,6 +28,8 @@ const NavBar = () => {
           <NavLink to="/adminportal/addusers">Add Users</NavLink>
         </li>
         <li>
+=======
+>>>>>>> 9c6068658f9fef3ca1caede5d17a8ab7b2a37dac
           <NavLink to="/">
             <LogoutIcon />
           </NavLink>

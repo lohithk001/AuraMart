@@ -1,5 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
+=======
+import DeleteIcon from '@mui/icons-material/Delete';
+>>>>>>> 9c6068658f9fef3ca1caede5d17a8ab7b2a37dac
 import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from "react-router-dom";
 
@@ -7,11 +11,20 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   useEffect(() => {
     const fetchapi = async () => {
       const response = await axios.get("http://localhost:4000/products");
       setProducts(response.data);
     };
+=======
+  const fetchapi = async () => {
+    let responsedata = await axios.get("https://fakestoreapi.com/products");
+    setProducts(responsedata.data);
+  };
+
+  useEffect(() => {
+>>>>>>> 9c6068658f9fef3ca1caede5d17a8ab7b2a37dac
     fetchapi();
   }, []);
 
