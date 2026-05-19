@@ -20,6 +20,13 @@ const NavBar = () => {
           <NavLink to="/adminportal/about">About</NavLink>
         </li>
         <li>
+          <NavLink to="/adminportal/addproducts">Add Product</NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/adminportal/addusers">Add Users</NavLink>
+        </li>
+        <li>
           <NavLink to="/">
             <LogoutIcon />
           </NavLink>
