@@ -7,9 +7,9 @@ const LandingPage = () => {
 
   return (
     <>
-    {/* <video src='/src/assets/background.mp4' autoPlay loop muted /> */}
+      {/* <video src='/src/assets/background.mp4' autoPlay loop muted /> */}
       <div className="landing-page">
-        <img src="/src/assets/hero.png" alt="Landing Background" className="background-image" />
+        {/* <img src="/src/assets/hero.png" alt="Landing Background" className="background-image" /> */}
         <h1>Welcome to <span>AuraMart</span></h1>
 
         <div className="container">
@@ -22,8 +22,7 @@ const LandingPage = () => {
 
 
           <div className="formbox">
-           <AdminLogin/>
-           <UsersLogin/>
+            {isAdmin ? <AdminLogin /> : <UsersLogin />}
           </div>
 
 

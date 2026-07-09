@@ -1,29 +1,34 @@
 import { Route, Routes } from "react-router-dom";
 import Products from "../Pages/Products";
 import Home from "../Pages/Home";
-import NavBar from "../NavBar";
-import About from "../Pages/About";
+import UserNavBar from "./UserNavBar";
 import ViewMore from "../Pages/ViewMore";
-import AddProduct from "../Pages/AddProducts";
 import Wishlist from "../Pages/Wishlist";
-import AddUsers from "./AddUsers";
+import About from "../Pages/About"; 
+// import Cart from "../Pages/Cart";
 
-const AdminPortal = () => {
+const UserPortal = () => {
   return (
     <>
-      <NavBar />
-      <Routes>
+      <UserNavBar />
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/viewmore/:id' element={<ViewMore />} />
+        <Route path='*' element={<Home />} />
+      </Routes> */}
+       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path='/about' element={<About />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/viewmore/:id' element={<ViewMore />} />
-        <Route path='/addproducts' element={<AddProduct />} />
-        <Route path='/addusers' element={<AddUsers />} />
         <Route path='*' element={<Home />} />
       </Routes>
     </>
   );
 };
 
-export default AdminPortal;
+export default UserPortal;

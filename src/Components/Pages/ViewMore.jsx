@@ -1,49 +1,86 @@
-import axios from "axios"
-import {  useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import data from '../../DataBase/data.json';
+import { useCart } from '../../Context/CartContext';
 
+const STORAGE_KEY = "auramart_wishlist";
 
 const ViewMore = () => {
+  const params = useParams();
+  const productId = params.id;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [oneProduct, setOneProduct] = useState({});
+  const { addToCart } = useCart();
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return [];
+    try {
+      return JSON.parse(saved);
+    } catch {
+      localStorage.removeItem(STORAGE_KEY);
+      return [];
+    }
+  });
 
-  let params =  useParams()
-let productId = params.id
- const navigate = useNavigate();
+  useEffect(() => {
+    const fetchProductDetails = () => {
+      // Find product locally from data.json
+      const foundProduct = data.products.find(p => p.id.toString() === productId.toString());
+      if (foundProduct) {
+        setOneProduct(foundProduct);
+      }
+    };
+    fetchProductDetails();
+  }, [productId]);
 
-let [oneProduct, setOneProduct] = useState({})
+  const isWishlisted = oneProduct.id && wishlist.some((item) => item.id === oneProduct.id);
 
-let fetchProductDetails = async () => {
- let apidata =  await axios.get(`https://fakestoreapi.com/products/${productId}`)
- setOneProduct(apidata.data);
-}
+  const toggleWishlist = () => {
+    if (!oneProduct.id) return;
+    const nextWishlist = isWishlisted
+      ? wishlist.filter((item) => item.id !== oneProduct.id)
+      : [...wishlist, oneProduct];
 
+    setWishlist(nextWishlist);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextWishlist));
+  };
 
-useEffect(() => {
-    fetchProductDetails()
-}, [])
+  const handleBack = () => {
+    const basePath = location.pathname.startsWith('/adminportal') ? '/adminportal' : '/userportal';
+    navigate(`${basePath}/products`);
+  };
 
- let handleClick = () => {
-navigate(`/adminportal/products`);
- }
+  const { title, price, description, category, image, rating } = oneProduct;
 
-console.log(oneProduct)
-
-let {title, price, description, category, image, rating} = oneProduct
   return (
     <div className="viewmore">
-        <button  className="bck-btn" onClick={handleClick}> Back </button>
-    <h1>{title}</h1>
-    <div className="viewmore-container">
-        <div className="viewmore-image"><img src={image} alt="NO Image" /></div>    
-        <div className="viewmore-details">
-            <h2>Price: ${price}</h2>
-            <h3>Category: {category}</h3>
-            <p>{description}</p>
-            <h4>Rating: {rating && rating.rate} / 5</h4>
+      <button className="bck-btn" onClick={handleBack}>Back</button>
+      <div className="viewmore-header">
+        <h1>{title}</h1>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <button className={`wish-btn ${isWishlisted ? 'wish-active' : ''}`} onClick={toggleWishlist}>
+            {isWishlisted ? <><FavoriteIcon fontSize="small" /> Remove from wishlist</> : <><FavoriteBorderIcon fontSize="small" /> Add to wishlist</>}
+          </button>
+          <button className="wish-btn" onClick={() => oneProduct.id && addToCart(oneProduct)} style={{ background: '#d4762a' }}>
+            <ShoppingCartIcon fontSize="small" /> Add to Cart
+          </button>
         </div>
+      </div>
+      <div className="viewmore-container">
+        <div className="viewmore-image"><img src={image} alt={title} /></div>
+        <div className="viewmore-details">
+          <h2>Price: ${price}</h2>
+          <h3>Category: {category}</h3>
+          <p>{description}</p>
+          <h4>Rating: {rating && rating.rate} / 5</h4>
+        </div>
+      </div>
     </div>
-   </div>
-  )
-}
+  );
+};
 
-export default ViewMore
+export default ViewMore;

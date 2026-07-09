@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import dataJson from '../../DataBase/data.json'
 
 import './Home.css'
 
@@ -7,10 +8,9 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products?limit=6")
-      .then(r => r.json())
-      .then(data => { setProducts(data); setLoading(false) })
-      .catch(() => setLoading(false))
+    // Load first 6 products locally from data.json
+    setProducts(dataJson.products.slice(0, 6));
+    setLoading(false);
   }, [])
 
   const tags = ["🔥 Trending", "✨ New Arrival", "⭐ Best Seller", "💎 Premium", "🏷️ Sale"]
