@@ -24,7 +24,7 @@ const UserNavBar = () => {
           </li>
           <li>
             <NavLink to="/">
-              <LogoutIcon />
+              Logout<LogoutIcon />
             </NavLink>
           </li>
         </ul>

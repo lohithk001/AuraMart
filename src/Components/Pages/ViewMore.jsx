@@ -5,6 +5,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import data from '../../DataBase/data.json';
 import { useCart } from '../../Context/CartContext';
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const STORAGE_KEY = "auramart_wishlist";
 
@@ -49,6 +51,19 @@ const ViewMore = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(nextWishlist));
   };
 
+  let addToCart1 = () => {
+    axios.post('http://localhost:4000/cartItems', { ...oneProduct, quantity: 1 })
+      .then(() => {
+        addToCart(oneProduct);
+        toast.success("Added to cart!");
+      })
+      .catch((err) => {
+        toast.error("Error adding to cart:", err);
+      });
+  };
+
+
+
   const handleBack = () => {
     const basePath = location.pathname.startsWith('/adminportal') ? '/adminportal' : '/userportal';
     navigate(`${basePath}/products`);
@@ -62,12 +77,19 @@ const ViewMore = () => {
       <div className="viewmore-header">
         <h1>{title}</h1>
         <div style={{ display: 'flex', gap: '1rem' }}>
+
+
+
           <button className={`wish-btn ${isWishlisted ? 'wish-active' : ''}`} onClick={toggleWishlist}>
             {isWishlisted ? <><FavoriteIcon fontSize="small" /> Remove from wishlist</> : <><FavoriteBorderIcon fontSize="small" /> Add to wishlist</>}
           </button>
-          <button className="wish-btn" onClick={() => oneProduct.id && addToCart(oneProduct)} style={{ background: '#d4762a' }}>
+
+
+
+          <button className="wish-btn" onClick={addToCart1} style={{ background: '#d4762a' }}>
             <ShoppingCartIcon fontSize="small" /> Add to Cart
           </button>
+
         </div>
       </div>
       <div className="viewmore-container">

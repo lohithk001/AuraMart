@@ -5,12 +5,15 @@ import UserNavBar from "./UserNavBar";
 import ViewMore from "../Pages/ViewMore";
 import Wishlist from "../Pages/Wishlist";
 import About from "../Pages/About"; 
-// import Cart from "../Pages/Cart";
+
+
+import NavBar from "../NavBar";
+import Cart from "../Pages/Cart";
 
 const UserPortal = () => {
   return (
     <>
-      <UserNavBar />
+      {/* <UserNavBar /> */}
       {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -19,12 +22,15 @@ const UserPortal = () => {
         <Route path='/viewmore/:id' element={<ViewMore />} />
         <Route path='*' element={<Home />} />
       </Routes> */}
+
+      <NavBar />
        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path='/about' element={<About />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/viewmore/:id' element={<ViewMore />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='*' element={<Home />} />
       </Routes>
     </>

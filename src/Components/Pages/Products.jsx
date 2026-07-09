@@ -6,10 +6,14 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate, useLocation } from "react-router-dom";
 import data from '../../DataBase/data.json';
 import { useCart } from '../../Context/CartContext';
+import AddProduct from "./AddProducts";
 
 const STORAGE_KEY = "auramart_wishlist";
 
 const Products = () => {
+
+  const location1 = useLocation();
+  let pathBool = location1.pathname.startsWith("/adminportal");
   const [products, setProducts] = useState([]);
   const { addToCart } = useCart();
   const [wishlist, setWishlist] = useState(() => {
@@ -53,6 +57,10 @@ const Products = () => {
   return (
     <div className="products">
       <h1>Products</h1>
+
+     {pathBool &&  <button onClick={() => navigate('/adminportal/addproducts')}>
+        Add Products
+      </button>}
 
       <div className="prodcontainer">
         {products.map((item, index) => {
